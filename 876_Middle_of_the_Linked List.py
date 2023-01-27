@@ -5,6 +5,8 @@ Given the head of a singly linked list, return the middle node of the linked lis
 If there are two middle nodes, return the second middle node.
 '''
 
+#memory - c
+#speed - n
 
 class ListNode:
     def __init__(self, val=0, next=None):
@@ -14,15 +16,14 @@ class ListNode:
 class Solution(object):
 
     def findMiddle(self, head):
-        l = []
+        l = 0 #better counter
         while head:
-            l.append(head.val)
+            l+=1
             head = head.next
-        dl = len(l)
-        if dl % 2 == 0:
-            return int(dl / 2)+1
+        if l % 2 == 0:
+            return int(l / 2)+1
         else:
-            return int(dl // 2)+1
+            return int(l // 2)+1
 
 
     def middleNode(self, head):
@@ -67,5 +68,6 @@ def traverse1(head):
 
 '''
 finding - linked list is like pack of sausages, if you cut, you have only the rest
+insted of len list is better to use counter
 '''
 
