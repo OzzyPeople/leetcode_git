@@ -26,7 +26,7 @@ class Solution(object):
             return int(l // 2)+1
 
 
-    def middleNode(self, head):
+    def middleNode_1(self, head):
         """
         :type head: ListNode
         :rtype: ListNode
@@ -39,6 +39,20 @@ class Solution(object):
             if middle == count:
                 return head
             head = head.next
+
+    #the idea is that fast list is 2 times faster, hense slow is middle
+    def middleNode_2(self, head):
+        slow = fast = head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        return slow
+
+    def middleNode_3(self, head: ListNode) -> ListNode:
+        arr = [head]
+        while arr[-1].next:
+            arr.append(arr[-1].next)
+        return arr[len(arr) // 2]
 
 
 def print_list(node):
@@ -59,7 +73,7 @@ a = Solution()
 #print(a.findMiddle(result))
 #print_list(a.traverse(result))
 
-print_list(a.middleNode(result))
+print_list(a.middleNode_2(result))
 
 def traverse1(head):
     if head:
